@@ -11,7 +11,7 @@ const Register = () => {
     const [signUpError, setSignUPError] = useState('');
     const navigate = useNavigate();
 
-    const provider = GoogleAuthProvider;
+    const provider =new GoogleAuthProvider();
     const handleSignUp = (data) => {
         setSignUPError('');
         createUser(data.email, data.password)

@@ -10,9 +10,8 @@ const Navbar = () => {
             .catch(err => console.log(err));
     }
     const menuItem = <>
-        <li className='text-sky-500 text-xl font-semibold'><Link>Home</Link></li>
-        <li className='text-sky-500 text-xl font-semibold'><Link>Blog</Link></li>
-        <li className='text-sky-500 text-xl font-semibold'><Link>Categories</Link></li>
+        <li className='text-sky-500 text-xl font-semibold'><Link to='/'>Home</Link></li>
+        <li className='text-sky-500 text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
        
     </>
     return (
