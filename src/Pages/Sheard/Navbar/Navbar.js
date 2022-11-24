@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthProvider } from '../../Context/AuthContext';
 
 const Navbar = () => {
+    const { user, logOut }=useContext(AuthProvider)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err));
+    }
     const menuItem = <>
         <li className='text-sky-500 text-xl font-semibold'><Link>Home</Link></li>
         <li className='text-sky-500 text-xl font-semibold'><Link>Blog</Link></li>
@@ -27,7 +34,14 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className='btn '>Sing up</button>
+               
+                
+                {user?.uid ?
+                    <>
+                        <button onClick={handleLogOut} className='btn '>Log out</button>
+                    </>
+                    : <Link to='/login'><button className='btn '>Login</button></Link>}
+
             </div>
         </div>
     );

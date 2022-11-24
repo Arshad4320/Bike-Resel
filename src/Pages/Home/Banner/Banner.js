@@ -1,27 +1,13 @@
 import React from 'react';
 import './Banner.css'
-import img from '../../../Image/img.jpg'
-import img2 from '../../../Image/img2.jpg'
+import img from '../../../Image/img.png'
 const Banner = () => {
     return (
-        <div className="carousel w-full">
-            <div id="slide1" className="carousel-item relative w-full">
-                <div className='carousel-img'></div>
-                <img src={img} alt='' className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle">❮</a>
-                    <a href="#slide2" className="btn btn-circle">❯</a>
-                </div>
+        <div className='gradient'>
+            <div className='bgBanner'>
+                {/* <p className='text-5xl text-teal-300 p-48 font-semibold'>An organization that sells all types of bikes with attractive offers for bike lovers.</p> */}
             </div>
-            <div id="slide2" className="carousel-item relative w-full">
-                <div className='carousel-img'></div>
-                <img src={img2} alt='' className="w-full" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" className="btn btn-circle">❮</a>
-                    <a href="#slide3" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-        </div>
+       </div>
     );
 
 };

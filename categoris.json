@@ -1,0 +1,102 @@
+[
+    {
+        "categoryId": 1,
+        "sellerName":"Shadat Hossen",
+        "name": "BMW",
+        "price":,
+        "location":,
+        "usedTime":,
+        "PostDate":,
+        "condition":"",
+        "img":
+
+    },
+    {
+        "categoryId": 1,
+        "sellerName":"Naim Kahn" ,
+        "name": "Books",
+        "price": ,
+        "location": ,
+        "usedTime": ,
+        "PostDate": ,
+        "condition": "",
+        "img":
+    },
+    {
+        "categoryId": 1,
+        "sellerName":"Ayakub Ali" ,
+        "name": "Books",
+        "price": ,
+        "location": ,
+        "usedTime": ,
+        "PostDate": ,
+        "condition": "",
+        "img":
+    },
+    {
+        "categoryId": 2,
+        "sellerName":"Selim" ,
+        "name": "Books",
+        "price": ,
+        "location": ,
+        "usedTime": ,
+        "PostDate": ,
+        "condition": "",
+        "img":
+    },
+    {
+        "categoryId": 2,
+        "sellerName":"Korim",
+        "name": "Books",
+        "price": ,
+        "location": ,
+        "usedTime": ,
+        "PostDate": ,
+        "condition": "",
+        "img":
+    },
+    {
+        "categoryId": 2,
+        "sellerName": "Rohim",
+        "name": "Books",
+        "price": ,
+        "location": ,
+        "usedTime": ,
+        "PostDate": ,
+        "condition": "",
+        "img":
+    },
+    {
+        "categoryId": 3,
+        "sellerName":"Musfiq" ,
+        "name": "",
+        "price": ,
+        "location": ,
+        "usedTime": ,
+        "PostDate": ,
+        "condition": "",
+        "img":
+    },
+    {
+        "categoryId": 3,
+        "sellerName":"Tamim",
+        "name": "",
+        "price": ,
+        "location": ,
+        "usedTime": ,
+        "PostDate": ,
+        "condition": "",
+        "img":
+    },
+    {
+        "categoryId": 3,
+        "sellerName":"Sakib" ,
+        "name": "Books",
+        "price": ,
+        "location": ,
+        "usedTime": ,
+        "PostDate": ,
+        "condition": "",
+        "img":
+    }
+]
