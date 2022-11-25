@@ -37,9 +37,9 @@ const Navbar = () => {
                 
                 {user?.uid ?
                     <>
-                        <button onClick={handleLogOut} className='btn '>Log out</button>
+                        <button onClick={handleLogOut} className='btn btn-primary'>Log out</button>
                     </>
-                    : <Link to='/login'><button className='btn '>Login</button></Link>}
+                    : <Link to='/login'><button className='btn btn-primary'>Login</button></Link>}
 
             </div>
         </div>

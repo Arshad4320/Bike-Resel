@@ -9,10 +9,11 @@ const AddBike = () => {
     const navigate = useNavigate()
 
     const handleProduct = (data) => {
+        console.log(data)
         const image = data.picture[0];
         const formData = new FormData()
         formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
         fetch(url, {
             method: "POST",
             body: formData
@@ -45,7 +46,7 @@ const AddBike = () => {
                     })
                         .then(res => res.json())
                         .then(result => {
-                            navigate('/')
+                            // navigate('/')
                             console.log(result)
                             swal("Thanks", `${data.productName} Bike is successfully added`, "success");
                         })
@@ -139,7 +140,7 @@ const AddBike = () => {
                             <label className="label"> <span className="label-text">Select Categories</span></label>
                             <select {...register("categories")} className="select select-ghost w-full max-w-xs input input-bordered">
                                 <option defaultChecked>BMW</option>
-                                <option>Suzuki </option>
+                                <option>SUZUKI </option>
                                 <option>KTM</option>
                             </select>
                         </div>

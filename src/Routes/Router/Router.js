@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddBike from "../../Pages/AddBike/AddBike";
 import Blog from "../../Pages/Blog/Blog";
-import Category from "../../Pages/Category/Category";
+import CategoryId from "../../Pages/Category/CategoryId";
 import Home from "../../Pages/Home/Home/Home";
 import Main from "../../Pages/Layout/Main";
 import Login from "../../Pages/Login/Login";
@@ -29,12 +29,14 @@ export const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path:'/categories',
+                path:'/addBike',
                 element:<AddBike></AddBike>
             },
+           
             {
-                path:'/category',
-                element:<Category></Category>
+                path:'/categoryItem/:id',
+                element:<CategoryId></CategoryId>,
+                loader: ({ params }) => fetch(`http://localhost:5000/categoryItem/${params.id}`)
             }
         ]
     }
