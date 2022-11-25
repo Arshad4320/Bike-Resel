@@ -1,20 +1,68 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
-const Categories = () => {
+const AddBike = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const imageHostKey = process.env.REACT_APP_imgbb_key
+    const navigate = useNavigate()
 
- const  handleProduct=(data)=>{
-    console.log(data);
- }
+    const handleProduct = (data) => {
+        const image = data.picture[0];
+        const formData = new FormData()
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                // console.log(imgData);
+
+                if (imgData.success) {
+                    const bike = {
+                        name: data.name,
+                        phone: data.phone,
+                        productName: data.productName,
+                        picture: imgData.data.url,
+                        location: data.location,
+                        brandNewPrice: data.BrandNewPrice,
+                        resalePrice: data.resalePrice,
+                        usedYear: data.usedYear,
+                        PostDate: data.PostDate,
+                        categories: data.categories
+
+                    }
+
+                    fetch('http://localhost:5000/categories', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(bike)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            navigate('/')
+                            console.log(result)
+                            swal("Thanks", `${data.productName} Bike is successfully added`, "success");
+                        })
+
+                }
+
+            })
+
+    }
 
     return (
         <div className=' flex justify-center '>
             <div className=' p-7'>
-                <h2 className='text-xl text-center'>Add Bike</h2>
+                <h2 className='text-2xl text-center'>Add Bike</h2>
                 <form onSubmit={handleSubmit(handleProduct)}>
                     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Seller Name</span></label>
                             <input type="text" {...register("name", {
@@ -47,7 +95,6 @@ const Categories = () => {
                             {errors.picture && <p className='text-red-500'>{errors.picture.message}</p>}
                         </div>
 
-                    
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Location</span></label>
                             <input type="text" {...register("location", {
@@ -56,8 +103,6 @@ const Categories = () => {
                             {errors.location && <p className='text-red-500'>{errors.location.message}</p>}
                         </div>
 
-
-
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Brand New Price</span></label>
                             <input type="Number" {...register("BrandNewPrice", {
@@ -65,9 +110,6 @@ const Categories = () => {
                             })} className="input input-bordered w-full max-w-xs" />
                             {errors.BrandNewPrice && <p className='text-red-500'>{errors.BrandNewPrice.message}</p>}
                         </div>
-
-
-
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Resale Price</span></label>
@@ -95,7 +137,7 @@ const Categories = () => {
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Select Categories</span></label>
-                            <select className="select select-ghost w-full max-w-xs input input-bordered">
+                            <select {...register("categories")} className="select select-ghost w-full max-w-xs input input-bordered">
                                 <option defaultChecked>BMW</option>
                                 <option>Suzuki </option>
                                 <option>KTM</option>
@@ -103,12 +145,12 @@ const Categories = () => {
                         </div>
                     </div>
 
-                    <input className='btn btn-primary  w-2/5 mt-4' value="Submit" type="submit" />
-                   
+                    <input className='btn btn-primary  w-1/3 mt-4' value="Submit" type="submit" />
+
                 </form>
             </div>
         </div>
     );
 };
 
-export default Categories;
+export default AddBike;
