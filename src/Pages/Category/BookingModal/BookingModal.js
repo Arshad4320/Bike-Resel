@@ -7,7 +7,7 @@ import { AuthProvider } from '../../Context/AuthContext';
 
 const BookingModal = ({ loadData }) => {
     const {user}=useContext(AuthProvider)
-    const { register, handleSubmit, } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { productName, name, phone, location, BrandNewPrice, resalePrice,
         usedYear, PostDate, categories }=loadData;
    
@@ -96,6 +96,7 @@ const BookingModal = ({ loadData }) => {
                                         <input type="number"  {...register("phone", {
                                             required: "phone number is Required"
                                         })} className="input input-bordered w-full max-w-xs" />
+                                        {errors.phone && <p className='text-red-500'>{errors.phone.message}</p>}
                                     </div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label"> <span className="label-text">Email</span></label>
@@ -109,6 +110,7 @@ const BookingModal = ({ loadData }) => {
                                         <input type="text"   {...register("location", {
                                             required: "Location is Required"
                                         })} className="input input-bordered w-full max-w-xs" />
+                                        {errors.location && <p className='text-red-500'>{errors.location.message}</p>}
                                     </div>
                                 </div>
                                 <input className='btn btn-primary  w-1/3 mt-4' value="Submit" type="submit" />
