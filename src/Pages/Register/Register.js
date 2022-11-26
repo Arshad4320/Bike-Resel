@@ -13,12 +13,31 @@ const Register = () => {
 
     const provider =new GoogleAuthProvider();
     const handleSignUp = (data) => {
+        //user api
+        const user={
+            Name:data.name,
+            Address: data.address,
+            Email: data.email,
+            Option: data.option
+        }
+        fetch('http://localhost:5000/user',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(user)
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            console.log(result)
+        })
+
+      console.log(user)
         setSignUPError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-
 
                 const userInfo = {
                     displayName: data.name
@@ -30,12 +49,10 @@ const Register = () => {
                     .catch(err => {console.log(err)});
                 ;
             })
-       
+       //user api end
 
             .catch(error => {
                 console.log(error)
-                swal("Sorry!", setSignUPError(error.message), "error");
-               
             });
     }
 const handleGoogleSignIn=()=>{

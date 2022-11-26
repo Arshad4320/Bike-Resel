@@ -1,34 +1,47 @@
-import React from 'react';
+import { stringify } from '@firebase/util';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
+import { AuthProvider } from '../../Context/AuthContext';
 
 
 const BookingModal = ({ loadData }) => {
+    const {user}=useContext(AuthProvider)
     const { register, handleSubmit, } = useForm();
-    const { productName, name, phone,  location, BrandNewPrice, resalePrice,
+    const { productName, name, phone, location, BrandNewPrice, resalePrice,
         usedYear, PostDate, categories }=loadData;
-
+   
     const handleProduct = (data) => {
-    
+        console.log(data)
+        console.log(data)
+        const buyer={
+            PhoneNumber: data.number,
+            MeetLocation: data.location,
+            BuyerName:data.name,
+            phone: data.phone,
+            Email:data.email,
+            productName: data.productName,
+            location: data.location,
+            resalePrice: data.resalePrice,
+            usedYear: data.usedYear,
+            PostDate: data.PostDate,
+            categories: data.categories
 
-            //         fetch('http://localhost:5000/categories', {
-            //             method: 'POST',
-            //             headers: {
-            //                 'content-type': 'application/json'
-            //             },
-            //             body: JSON.stringify(bike)
-            //         })
-            //             .then(res => res.json())
-            //             .then(result => {
-            //                 // navigate('/')
-            //                 console.log(result)
-            //                 swal("Thanks", `${data.productName} Bike is successfully added`, "success");
-            //             })
+        }
+        fetch('http://localhost:5000/booking',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(buyer)
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            console.log(result)
+            swal("Thanks", `${data.productName} your product successfully booking`, "success");
+        })
 
-            //     }
-
-            // })
-
+     
     }
 
     return (
@@ -37,49 +50,13 @@ const BookingModal = ({ loadData }) => {
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="text-lg font-bold">{productName}</h3>
+                    <h3 className="text-2xl font-semibold md-5 text-center">{productName}</h3>
                     <div className=' flex justify-center '>
                         <div className=' p-7'>
-                            <h2 className='text-2xl text-center'>Add Bike</h2>
+                           
                             <form onSubmit={handleSubmit(handleProduct)}>
-                                <div >
+                                <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 '>
 
-                                    <div className="form-control w-full max-w-xs">
-                                        <label className="label"> <span className="label-text">Seller Name</span></label>
-                                        <input type="text" readOnly defaultValue={name} {...register("name", {
-                                            required: "Name is Required"
-                                        })} className="input input-bordered w-full max-w-xs" />
-                                       
-                                    </div>
-
-                                    <div className="form-control w-full max-w-xs">
-                                        <label className="label"> <span className="label-text">Phone</span></label>
-                                        <input type="number" readOnly defaultValue={phone} {...register("phone", {
-                                            required: "phone number is Required"
-                                        })} className="input input-bordered w-full max-w-xs" />
-                                       
-                                    </div>
-
-                                    <div className="form-control w-full max-w-xs">
-                                        <label className="label"> <span className="label-text">Product Name</span></label>
-                                        <input type="text" readOnly defaultValue={productName} {...register("productName", {
-                                            required: "Product Name is Required"
-                                        })} className="input input-bordered w-full max-w-xs" />
-                                    </div>
-
-                                    <div className="form-control w-full max-w-xs">
-                                        <label className="label"> <span className="label-text">Location</span></label>
-                                        <input type="text" readOnly defaultValue={location} {...register("location", {
-                                            required: "Location is Required"
-                                        })} className="input input-bordered w-full max-w-xs" />
-                                    </div>
-
-                                    <div className="form-control w-full max-w-xs">
-                                        <label className="label"> <span className="label-text">Brand New Price</span></label>
-                                        <input type="Number" readOnly defaultValue={BrandNewPrice} {...register("BrandNewPrice", {
-                                            required: "Brand new price is required",
-                                        })} className="input input-bordered w-full max-w-xs" />
-                                    </div>
 
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label"> <span className="label-text">Resale Price</span></label>
@@ -88,12 +65,6 @@ const BookingModal = ({ loadData }) => {
                                         })} className="input input-bordered w-full max-w-xs" />
                                     </div>
 
-                                    <div className="form-control w-full max-w-xs">
-                                        <label className="label"> <span className="label-text">Used Time</span></label>
-                                        <input type="text" readOnly defaultValue={usedYear} {...register("usedYear", {
-                                            required: " Used time is required",
-                                        })} className="input input-bordered w-full max-w-xs" />
-                                    </div>
 
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label"> <span className="label-text">Post Date</span></label>
@@ -110,8 +81,36 @@ const BookingModal = ({ loadData }) => {
                                             <option>KTM</option>
                                         </select>
                                     </div>
-                                </div>
+                               
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label"> <span className="label-text">Buyer Name</span></label>
+                                        <input type="text" readOnly defaultValue={user?.displayName} {...register("name", {
+                                            required: "Name is Required"
+                                        })} className="input input-bordered w-full max-w-xs" />
+                                    </div>
 
+                                    
+
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label"> <span className="label-text">Phone</span></label>
+                                        <input type="number"  {...register("phone", {
+                                            required: "phone number is Required"
+                                        })} className="input input-bordered w-full max-w-xs" />
+                                    </div>
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label"> <span className="label-text">Email</span></label>
+                                        <input type="email" readOnly defaultValue={user?.email}  {...register("email", {
+                                            required: "email is Required"
+                                        })} className="input input-bordered w-full max-w-xs" />
+                                    </div>
+
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label"> <span className="label-text">Meet Location</span></label>
+                                        <input type="text"   {...register("location", {
+                                            required: "Location is Required"
+                                        })} className="input input-bordered w-full max-w-xs" />
+                                    </div>
+                                </div>
                                 <input className='btn btn-primary  w-1/3 mt-4' value="Submit" type="submit" />
 
                             </form>
