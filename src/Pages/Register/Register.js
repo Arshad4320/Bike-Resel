@@ -58,8 +58,26 @@ const Register = () => {
 const handleGoogleSignIn=()=>{
     googleSignIn(provider)
         .then(result => {
-            const user = result.user
-            console.log(user)
+            const user = result.user;
+            const signIngUser={
+                name:user.displayName,
+                email:user.email,
+                role: "Buyer"
+            }
+            fetch('http://localhost:5000/user', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(signIngUser)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                    swal("welcome!", "You  successfully Signup", "success");
+                    navigate('/')
+                })
+    
         })
         .catch(error => console.error(error))
 }

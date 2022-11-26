@@ -12,10 +12,11 @@ const Navbar = () => {
     const menuItem = <>
         <li className='text-sky-500 text-xl font-semibold'><Link to='/'>Home</Link></li>
         <li className='text-sky-500 text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
-
+        <li className='text-sky-500 text-xl font-semibold'><Link to='/dashboard'>Dashboard</Link></li>
+{/* 
        { 
-       user?.uid && <li className='text-sky-500 text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
-       }   
+        user?.Option= 'Buyer' && <li className='text-sky-500 text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
+       }    */}
     </>
     return (
         <div className="navbar shadow-lg p-5">
