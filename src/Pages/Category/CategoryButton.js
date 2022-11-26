@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthProvider } from '../Context/AuthContext';
+import BookingModal from './BookingModal/BookingModal';
 
 const CategoryButton = () => {
 
@@ -8,7 +10,7 @@ const CategoryButton = () => {
     useEffect(()=>{
         fetch('http://localhost:5000/bikeCategory')
         .then(res=>res.json())
-            .then(data => setBikeCategory(data))
+        .then(data => setBikeCategory(data))
     },[])
 
     return (
@@ -23,6 +25,7 @@ const CategoryButton = () => {
                     </Link>)
                 }
             </div>
+          
             </div>
     
     );

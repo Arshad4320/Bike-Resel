@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const CategoryItem = ({ items }) => {
+const CategoryItem = ({ items, setLoadData }) => {
     const { PostDate, brandNewPrice, categories, location, name, phone, picture, productName, resalePrice, usedYear}=items;
     return (
         <div>
@@ -16,12 +16,12 @@ const CategoryItem = ({ items }) => {
                         <p>Location : {location}</p>
                         <p>Brand New Price : {brandNewPrice}</p>
                         <p>Resale Price : {resalePrice}</p>
-                        <p>Used Year : {usedYear}</p>
+                        <p>Used Time : {usedYear}</p>
                         <p>Category : {categories}</p>
                        
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary w-full mt-10">Book Now</button>
+                        <label onClick={() => setLoadData(items)} className="btn btn-primary w-full mt-10" htmlFor="booking-modal">Book Now</label>
                     </div>
                 </div>
             </div>
