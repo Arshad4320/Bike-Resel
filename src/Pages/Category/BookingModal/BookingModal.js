@@ -12,8 +12,6 @@ const BookingModal = ({ loadData }) => {
         usedYear, PostDate, categories }=loadData;
    
     const handleProduct = (data) => {
-        console.log(data)
-        console.log(data)
         const buyer={
             PhoneNumber: data.number,
             MeetLocation: data.location,
@@ -39,6 +37,7 @@ const BookingModal = ({ loadData }) => {
         .then(result=>{
             console.log(result)
             swal("Thanks", `${data.productName} your product successfully booking`, "success");
+          
         })
 
      
@@ -113,7 +112,9 @@ const BookingModal = ({ loadData }) => {
                                         {errors.location && <p className='text-red-500'>{errors.location.message}</p>}
                                     </div>
                                 </div>
-                                <input className='btn btn-primary  w-1/3 mt-4' value="Submit" type="submit" />
+                               {
+                                    user?.uid && <input className='btn btn-primary  w-1/3 mt-4' value="Submit" type="submit" />
+                               }
 
                             </form>
                         </div>

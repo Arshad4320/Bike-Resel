@@ -5,12 +5,14 @@ import CategoryId from "../../Pages/Category/CategoryId";
 import Admin from "../../Pages/Dashboard/Admin/Admin";
 import AllUser from "../../Pages/Dashboard/AllUser/AllUser";
 import Buyers from "../../Pages/Dashboard/Buyers/Buyers";
+import Seller from "../../Pages/Dashboard/Seller/Seller";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Dashboard from "../../Pages/Layout/Dashboard";
 import Main from "../../Pages/Layout/Main";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
+
 
 export const router = createBrowserRouter([
     {
@@ -51,16 +53,22 @@ export const router = createBrowserRouter([
         children: [
            {
                 path: '/dashboard/allUser',
-                element:<AllUser></AllUser>
+                element:<AllUser></AllUser>,
+                loader: () => fetch('http://localhost:5000/user')
            },
            {
                path:'/dashboard/buyers',
                element:<Buyers></Buyers>
            },
+            {
+                path: '/dashboard/seller',
+                element: <Seller></Seller>
+            },
            {
                path:'/dashboard/admin',
                element:<Admin></Admin>
            }
+           
            
         ]
     },

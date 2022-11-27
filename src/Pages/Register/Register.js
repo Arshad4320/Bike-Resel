@@ -62,7 +62,7 @@ const handleGoogleSignIn=()=>{
             const signIngUser={
                 name:user.displayName,
                 email:user.email,
-                role: "Buyer"
+                Option: "Buyer"
             }
             fetch('http://localhost:5000/user', {
                 method: 'POST',
