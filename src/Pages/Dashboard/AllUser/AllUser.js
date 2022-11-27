@@ -48,10 +48,10 @@ const handleDelete=id=>{
                     <thead>
                         <tr>
                         
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Make Admin</th>
-                            <th>Delete</th>
+                            <th className='text-lg'>Name</th>
+                            <th className='text-lg'>Email</th>
+                            <th className='text-lg'>Make Admin</th>
+                            <th className='text-lg'>Delete</th>
                            
                         </tr>
                     </thead>
@@ -59,7 +59,7 @@ const handleDelete=id=>{
                         {
                             users?.map(user => <tr key={user._id}>
                                 <td>{user.Name}</td>
-                                <td>{user.Email}</td>
+                                <td>{user.email}</td>
                                 <td><button className='btn btn-secondary' onClick={() => handleUpdate(user._id)}>{user.Option}</button></td>
                                 <td><button className='btn btn-secondary' onClick={() => handleDelete(user._id)}>Delete</button></td>
                             </tr>)

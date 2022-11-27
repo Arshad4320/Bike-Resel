@@ -11,7 +11,7 @@ const BookingModal = ({ loadData }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { productName, name, phone, location, BrandNewPrice, resalePrice,
         usedYear, PostDate, categories }=loadData;
-   
+   console.log(productName)
     const handleProduct = (data) => {
         const buyer={
             PhoneNumber: data.number,
@@ -37,7 +37,7 @@ const BookingModal = ({ loadData }) => {
         .then(res=>res.json())
         .then(result=>{
             console.log(result)
-            swal("Thanks", `${data.productName} your product successfully booking`, "success");
+            swal("Thanks", `Product is successfully booking`, "success");
           
         })
 

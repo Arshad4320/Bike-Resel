@@ -11,10 +11,10 @@ const Seller = () => {
                     <table className="table table-zebra w-full">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Role</th>
+                                <th className='text-lg'>Name</th>
+                                <th className='text-lg'>Email</th>
+                                <th className='text-lg'>Address</th>
+                                <th className='text-lg'>Role</th>
                     
                             </tr>
                         </thead>
@@ -22,7 +22,7 @@ const Seller = () => {
                         {
                                 sellers?.map(seller => <tr>
                                     <th>{seller.Name}</th>
-                                    <td>{seller.Email}</td>
+                                    <td>{seller.email}</td>
                                     <td>{seller.Address}</td>
                                     <td>{seller.Option}</td>
                                 </tr>)

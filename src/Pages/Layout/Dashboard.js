@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import AddBike from '../AddBike/AddBike';
+import { AuthProvider } from '../Context/AuthContext';
+import useAdmin from '../Hooks/useAdmin';
 import Navbar from '../Sheard/Navbar/Navbar';
+import { isAdmin } from '@firebase/util';
 
 const Dashboard = () => {
+    const {user}=useContext(AuthProvider)
+    // const [isAdmin]=useAdmin(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -20,9 +25,15 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-blue-500 text-xl font-semibold bg-base-100 ">
                         <li ><Link to='/dashboard/admin'>Admin</Link></li>
+                        {/* {
+                            isAdmin && <>
+                                
+                            </>
+                        } */}
                         <li><Link to='/dashboard/allUser'>All User</Link></li>
                         <li><Link to='/dashboard/buyers'>Buyers</Link></li>
                         <li><Link to='/dashboard/seller'>Seller</Link></li>
+                        <li><Link to='/dashboard/orders'>My Orders</Link></li>
                     </ul>
 
                 </div>
