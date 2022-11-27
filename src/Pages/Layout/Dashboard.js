@@ -10,15 +10,15 @@ const Dashboard = () => {
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 
-                <div className="drawer-content flex">
+                <div className="drawer-content 0">
                     {/* <AddBike></AddBike> */}
                     <Outlet></Outlet>
                    
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                   
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-blue-500 text-xl font-semibold">
+                    <ul className="menu p-4 w-80 text-blue-500 text-xl font-semibold bg-base-100 ">
                         <li ><Link to='/dashboard/admin'>Admin</Link></li>
                         <li><Link to='/dashboard/allUser'>All User</Link></li>
                         <li><Link to='/dashboard/buyers'>Buyers</Link></li>

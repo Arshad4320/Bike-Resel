@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AuthContext, { AuthProvider } from '../Context/AuthContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { swal } from 'sweetalert';
 
 const Login = () => {
     const { loginUser,user }=useContext(AuthProvider)
+    const [error, setError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
  
     if (user) {
+
         navigate(from, { replace: true });
         swal("welcome!", "You  successfully login", "success");
     }
@@ -22,10 +24,15 @@ const password=form.password.value;
 
 loginUser(email,password)
 .then(result=>{
+    setError('');
     const user=result.user
     console.log(user)
 })
-.catch(error=>console.error(error))
+.catch(error=>{
+    console.error(error)
+    setError(error.message);
+})
+    
 
 }
  
@@ -51,10 +58,12 @@ loginUser(email,password)
                             <input type="password" name="password" placeholder="password" className="input input-bordered" />
 
                         </div>
+            
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
                         <p>New to Resale Bike? Please <Link className='text-blue-600' to='/register'>Register</Link></p>
+                        <p className='text-red-500'> {error}</p>
                     </form>
                 </div>
             </div>

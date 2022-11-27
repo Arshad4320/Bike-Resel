@@ -1,6 +1,7 @@
 import { stringify } from '@firebase/util';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthProvider } from '../../Context/AuthContext';
 
@@ -113,7 +114,15 @@ const BookingModal = ({ loadData }) => {
                                     </div>
                                 </div>
                                {
-                                    user?.uid && <input className='btn btn-primary  w-1/3 mt-4' value="Submit" type="submit" />
+                                    user?.uid ?
+                                        <input className='btn btn-primary  w-1/3 mt-4' value="Submit" type="submit" />
+                                        : <>
+                                            <input disabled className='btn btn-primary  w-1/3 mt-4' value="Submit" type="submit" />
+                                           <Link to='/login'>
+                                                <input className='btn btn-primary  w-1/3 ml-2 mt-4' value="Login" type="submit" />
+                                           </Link>
+                                            
+                                        </>
                                }
 
                             </form>

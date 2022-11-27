@@ -31,7 +31,9 @@ const AllUser = () => {
                                 <td>{user.Name}</td>
                                 <td>{user.Email}</td>
                                 <td>{user.Option}</td>
-                                <td><button className='btn btn-secondary'>Delete</button></td>
+                                <td>
+                                    <button className='btn btn-secondary'>Delete</button>
+                                </td>
                         
 
                             </tr>)
