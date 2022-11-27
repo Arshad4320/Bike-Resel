@@ -70,12 +70,17 @@ export const router = createBrowserRouter([
             },
            {
                path:'/dashboard/admin',
-               element:<Admin></Admin>
+               element:<Admin></Admin>,
+               loader: () => fetch('http://localhost:5000/user/admin')
               
            },
         {
             path:'/dashboard/orders',
             element:<MyOrders></MyOrders>
+        },
+        {
+            path:'/dashboard/addProduct',
+            element:<AddBike></AddBike>
         }
            
            

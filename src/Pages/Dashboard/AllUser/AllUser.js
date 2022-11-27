@@ -43,7 +43,7 @@ const handleDelete=id=>{
         <div>
             <h2 className='text-center mt-10 text-3xl font-bold uppercase mb-8 text-blue-500'>All User</h2>
             
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto ">
                 <table className="table table-zebra w-full">
                     <thead>
                         <tr>

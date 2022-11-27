@@ -34,6 +34,7 @@ const Dashboard = () => {
                         <li><Link to='/dashboard/buyers'>Buyers</Link></li>
                         <li><Link to='/dashboard/seller'>Seller</Link></li>
                         <li><Link to='/dashboard/orders'>My Orders</Link></li>
+                        <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
                     </ul>
 
                 </div>
