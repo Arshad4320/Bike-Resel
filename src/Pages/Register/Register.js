@@ -17,7 +17,7 @@ const Register = () => {
         const user={
             Name:data.name,
             Address: data.address,
-            Email: data.email,
+            email: data.email,
             Option: data.option
         }
         fetch('http://localhost:5000/user',{
@@ -32,7 +32,6 @@ const Register = () => {
             console.log(result)
         })
 
-      console.log(user)
         setSignUPError('');
         createUser(data.email, data.password)
             .then(result => {
@@ -60,7 +59,7 @@ const handleGoogleSignIn=()=>{
         .then(result => {
             const user = result.user;
             const signIngUser={
-                name:user.displayName,
+                Name:user?.displayName,
                 email:user.email,
                 Option: "Buyer"
             }
