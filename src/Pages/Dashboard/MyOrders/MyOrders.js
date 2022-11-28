@@ -14,15 +14,7 @@ const MyOrders = () => {
                     res.json())
 
     })
-    // const [orders, setOrders] = useState([])
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/user/booking?Email=${orders.Email}`)
-    //         .then(res => res.json())
-    //         .then(data => console.log(data))
-
-    // },[orders.Email])
-       
-
+   
     return (
         <div>
             <h2 className='text-center mt-10 text-3xl font-bold uppercase mb-8 text-blue-500'>My Orders</h2>

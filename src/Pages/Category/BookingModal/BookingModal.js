@@ -8,9 +8,10 @@ import { AuthProvider } from '../../Context/AuthContext';
 
 const BookingModal = ({ loadData }) => {
     const {user}=useContext(AuthProvider)
+    console.log(loadData)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { productName, name, phone, location, BrandNewPrice, resalePrice,
-        usedYear, PostDate, categories }=loadData;
+        usedYear, PostDate, categories, picture }=loadData;
    console.log(productName)
     const handleProduct = (data) => {
         const buyer={
@@ -24,7 +25,8 @@ const BookingModal = ({ loadData }) => {
             resalePrice: data.resalePrice,
             usedYear: data.usedYear,
             PostDate: data.PostDate,
-            categories: data.categories
+            categories: data.categories,
+            picture:data.picture
 
         }
         fetch('http://localhost:5000/booking',{
@@ -57,6 +59,7 @@ const BookingModal = ({ loadData }) => {
                             <form onSubmit={handleSubmit(handleProduct)}>
                                 <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 '>
 
+                                   
 
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label"> <span className="label-text">Resale Price</span></label>
@@ -81,6 +84,7 @@ const BookingModal = ({ loadData }) => {
                                             <option>KTM</option>
                                         </select>
                                     </div>
+                            
                                
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label"> <span className="label-text">Buyer Name</span></label>

@@ -17,13 +17,9 @@ const Navbar = () => {
             user?.email && 
             <li className='text-sky-500 text-xl font-semibold'><Link to='/dashboard'>Dashboard</Link></li>
         }
-{/* 
-       { 
-        user?.Option= 'Buyer' && <li className='text-sky-500 text-xl font-semibold'><Link to='/blog'>Blog</Link></li>
-       }    */}
     </>
     return (
-        <div className="navbar shadow-lg p-5">
+        <div className="navbar  bg-slate-900 shadow p-5">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

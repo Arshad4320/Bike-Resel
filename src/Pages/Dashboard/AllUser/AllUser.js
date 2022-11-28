@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import {useQuery} from "@tanstack/react-query"
 import swal from 'sweetalert';
 
 
 const AllUser = () => {
-
     // const users=useLoaderData()
     const { data: users =[], refetch } = useQuery({
         queryKey: ["user"],
@@ -40,11 +39,11 @@ const handleDelete=id=>{
     })
 }
     return (
-        <div>
+        <div >
             <h2 className='text-center mt-10 text-3xl font-bold uppercase mb-8 text-blue-500'>All User</h2>
             
             <div className="overflow-x-auto ">
-                <table className="table table-zebra w-full">
+                <table className="table table-zebra w-full ">
                     <thead>
                         <tr>
                         
