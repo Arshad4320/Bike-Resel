@@ -9,14 +9,14 @@ const AllUser = () => {
     const { data: users =[], refetch } = useQuery({
         queryKey: ["user"],
         queryFn: () =>
-            fetch('http://localhost:5000/user')
+            fetch('https://bike-server-seven.vercel.app/user')
             .then(res =>
                 res.json())
             
     })
 //usr update
     const handleUpdate =id=>{
-        fetch(`http://localhost:5000/user/${id}`,{
+        fetch(`https://bike-server-seven.vercel.app/user/${id}`,{
             method:'PUT',
         })
         .then(res=>res.json())
@@ -28,7 +28,7 @@ const AllUser = () => {
     }
 //user delete
 const handleDelete=id=>{
-    fetch(`http://localhost:5000/user/${id}`,{
+    fetch(`https://bike-server-seven.vercel.app/user/${id}`,{
         method:'DELETE',
     })
     .then(res=>res.json())

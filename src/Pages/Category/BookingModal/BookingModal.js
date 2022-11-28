@@ -29,7 +29,7 @@ const BookingModal = ({ loadData }) => {
             picture:data.picture
 
         }
-        fetch('http://localhost:5000/booking',{
+        fetch('https://bike-server-seven.vercel.app/booking',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

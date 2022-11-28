@@ -20,7 +20,7 @@ const Register = () => {
             email: data.email,
             Option: data.option
         }
-        fetch('http://localhost:5000/user',{
+        fetch('https://bike-server-seven.vercel.app/user',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
@@ -63,7 +63,7 @@ const handleGoogleSignIn=()=>{
                 email:user.email,
                 Option: "Buyer"
             }
-            fetch('http://localhost:5000/user', {
+            fetch('https://bike-server-seven.vercel.app/user', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

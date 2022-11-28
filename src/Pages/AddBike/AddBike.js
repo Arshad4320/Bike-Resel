@@ -37,7 +37,7 @@ const AddBike = () => {
 
                     }
 
-                    fetch('http://localhost:5000/categories', {
+                    fetch('https://bike-server-seven.vercel.app/categories', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -94,7 +94,7 @@ const AddBike = () => {
                                 required: "picture is Required"
                             })} className="input input-bordered w-full max-w-xs" />
                             {errors.picture && <p className='text-red-500'>{errors.picture.message}</p>}
-                        </div>
+                </div>
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Location</span></label>

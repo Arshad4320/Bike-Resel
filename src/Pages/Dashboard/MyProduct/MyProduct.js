@@ -8,7 +8,7 @@ const MyProduct = () => {
     const { data: orders = [], refetch } = useQuery({
         queryKey: ["orders"],
         queryFn: () =>
-            fetch(`http://localhost:5000/user/booking?Email=${user.email}`)
+            fetch(`https://bike-server-seven.vercel.app/user/booking?Email=${user.email}`)
                 .then(res =>
                     res.json())
 

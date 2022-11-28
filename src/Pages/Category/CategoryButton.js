@@ -8,7 +8,7 @@ const CategoryButton = () => {
     const [bikeCategory,setBikeCategory]=useState();
 // console.log(bikeCategory)
     useEffect(()=>{
-        fetch('http://localhost:5000/bikeCategory')
+        fetch('https://bike-server-seven.vercel.app/bikeCategory')
         .then(res=>res.json())
         .then(data => setBikeCategory(data))
     },[])

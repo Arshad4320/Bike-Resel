@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
             {
                 path:'/categoryItem/:id',
                 element:<CategoryId></CategoryId>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categoryItem/${params.id}`)
+                loader: ({ params }) => fetch(`https://bike-server-seven.vercel.app/categoryItem/${params.id}`)
             }
         ]
     },
@@ -57,22 +57,22 @@ export const router = createBrowserRouter([
            {
                 path: '/dashboard/allUser',
                 element:<AllUser></AllUser>,
-                loader: () => fetch('http://localhost:5000/user')
+                loader: () => fetch('https://bike-server-seven.vercel.app/user')
            },
            {
                path:'/dashboard/buyers',
                element:<Buyers></Buyers>,
-                loader: () => fetch('http://localhost:5000/user/buyer')
+                loader: () => fetch('https://bike-server-seven.vercel.app/user/buyer')
            },
             {
                 path: '/dashboard/seller',
                 element: <Seller></Seller>,
-                loader: () => fetch('http://localhost:5000/user/seller')
+                loader: () => fetch('https://bike-server-seven.vercel.app/user/seller')
             },
            {
                path:'/dashboard/admin',
                element:<Admin></Admin>,
-               loader: () => fetch('http://localhost:5000/user/admin')
+               loader: () => fetch('https://bike-server-seven.vercel.app/user/admin')
               
            },
         {
